@@ -4,38 +4,29 @@ import './index.css';
 
 
 /* 
-/* 
-In this branch we will add keys to the dynamic list items.
- Keys tell React about the identity of each component which allows 
- React to maintain state between re-renders. If a component’s key changes, 
- the component will be destroyed and re-created with a new state.steps were taken.
 
-key is a special and reserved property in React (along with ref, a more advanced 
-feature). When an element is created, React extracts the key property and stores 
-the key directly on the returned element. Even though key may look like it belongs 
-in props, key cannot be referenced using this.props.key.
- React automatically uses key to decide which components to update.
-  A component cannot inquire about its key.
+Clicking any of the list item’s buttons throws an error because the jumpTo method 
+is undefined. Before we implement jumpTo, we’ll add stepNumber to 
+the Game component’s state to indicate which step we’re currently viewing.
 
-It’s strongly recommended that you assign proper keys whenever you build dynamic lists.
-If you don’t have an appropriate key, you may want to consider restructuring your data 
-so that you do.
+First, add stepNumber: 0 to the initial state in Game’s constructor.
+Next, we’ll define the jumpTo method in Game to update that stepNumber. 
+We also set xIsNext to true if the number that we’re changing stepNumber 
+to is even.
 
-If no key is specified, React will present a warning and use the array index as a key
-by default. Using the array index as a key is problematic when trying to re-order
-a list’s items or inserting/removing list items. 
-Explicitly passing key={i} silences the warning but has the same problems as array
-indices and is not recommended in most cases.
+We will now make a few changes to the Game’s handleClick method which fires when 
+you click on a square.
+The stepNumber state we’ve added reflects the move displayed to the user now. 
+After we make a new move, we need to update stepNumber by adding stepNumber: 
+history.length as part of the this.setState argument. 
+This ensures we don’t get stuck showing the same move after a new one has been made.
 
-Keys do not need to be globally unique; 
-they only need to be unique between components and their siblings.
+We will also replace reading this.state.history with this.state.history.slice(0, this.state.stepNumber + 1). 
+This ensures that if we “go back in time” and then make a new move from that point, 
+we throw away all the “future” history that would now become incorrect.
 
-In the tic-tac-toe game’s history, each past move has a unique ID associated with it:
- it’s the sequential number of the move. The moves are never re-ordered, deleted, 
- or inserted in the middle, so it’s safe to use the move index as a key.
-
-In the Game component’s render method, we can add the key as <li key={move}> 
-and React’s warning about keys should disappear.
+Finally, we will modify the Game component’s render method from always rendering
+ the last move to rendering the currently selected move according to stepNumber:
 
 */
 
@@ -88,12 +79,14 @@ function Square(props) {
           history: [{
             squares: Array(9).fill(null),
           }],
+          stepNumber: 0,
           xIsNext: true,
         };
       }
 
       handleClick(i) {
-        const history = this.state.history;
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+
         const current = history[history.length - 1];
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
@@ -104,14 +97,20 @@ function Square(props) {
           history: history.concat([{
             squares: squares,
           }]),
+          stepNumber: history.length,
           xIsNext: !this.state.xIsNext,
         });
       }
-
+      jumpTo(step) {
+        this.setState({
+          stepNumber: step,
+          xIsNext: (step % 2) === 0,
+        });
+      }
 
       render() {
         const history = this.state.history;
-        const current = history[history.length - 1];
+        const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
     
         const moves = history.map((step, move) => {
