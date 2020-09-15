@@ -85,6 +85,13 @@ class Square extends React.Component {
      is passed down from the Board to the Square when a Square is clicked as follows:
     */
 
+   handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = 'X';
+    this.setState({squares: squares});
+  }
+  
+
    renderSquare(i) {
     return (
       <Square
