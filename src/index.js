@@ -9,7 +9,13 @@ import './index.css';
  this keeps the child components in sync with each other and with the parent component.
 
 In this branch we will add an array to the Board component to hold the state value of each Square.
- */
+ 
+After these changes, we’re again able to click on the Squares to fill them, the same as we had before. 
+However, now the state is stored in the Board component instead of the individual Square components. 
+When the Board’s state changes, the Square components re-render automatically. 
+Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
+
+*/
 
 class Square extends React.Component {
    
@@ -83,14 +89,17 @@ class Square extends React.Component {
     and we’ll have Square call that function when a square is clicked.
      We’ll change the renderSquare method in Board to call a function that
      is passed down from the Board to the Square when a Square is clicked as follows:
-    */
+    
+    Note how in handleClick, we call .slice() to create a copy of the squares array
+     to modify instead of modifying the existing array. 
+     */
 
    handleClick(i) {
     const squares = this.state.squares.slice();
     squares[i] = 'X';
     this.setState({squares: squares});
   }
-  
+
 
    renderSquare(i) {
     return (
