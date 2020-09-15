@@ -29,6 +29,7 @@ class Square extends React.Component {
       {//return <Square />;}
       return <Square value={i} />;
     }
+    }
   
     render() {
       const status = 'Next player: X';
