@@ -8,29 +8,40 @@ or multiline comments
 */
 
 class Square extends React.Component {
+   
+    /* 
+    React components can have state by setting this.state in their constructors.
+     this.state should be considered as private to a React component that it’s defined in.
+      Let’s store the current value of the Square in this.state, and change it when the Square is clicked.
+    
+    First, we’ll add a constructor to the class to initialize the state:
+     Note: In JavaScript classes, you need to always call super when defining the constructor of a subclass.
+       All React component classes that have a constructor should start with a super(props) call.
+       
+    */
+    
+     constructor(props) {
+        super(props);
+        this.state = {
+          value: null,
+        };
+      }
+
     render() {
       return (
-        <button className="square" onClick={() => alert('click')}>
-                {/* ES6/ES2015 introduced arrow functions, which are nice 
-                when working with inline functions, as parameters or callbacks:
-                the previous syntax:
-
-                   const dosomething = function dosomething(foo) {
-                            // do something
-                            }
-
-                can now be written using arrow syntax as:
-                
-                const dosomething = foo => {
-                            //do something
-                            }
-
-            In the code for this button, notice how with onClick={() => alert('click')}, 
-            we’re passing a function - alert('click') - as the onClick prop. 
-            React will only call this function after a click.
+        <button  className="square"
+        onClick={() => this.setState({value: 'X'})}>
+                {/* 
+                Replace this.props.value with this.state.value inside the <button> tag.
+                Replace the onClick={...} event handler with onClick={() => this.setState({value: 'X'})}.
+                Put the className and onClick props on separate lines for better readability.
+                 
+                By calling this.setState from an onClick handler in the Square’s render method, 
+                we tell React to re-render that Square whenever its <button> is clicked. 
+                 
                  */ }
-         {this.props.value}
-         {console.log(this.props.value)}
+         {this.state.value}
+         
          
         </button>
       );
