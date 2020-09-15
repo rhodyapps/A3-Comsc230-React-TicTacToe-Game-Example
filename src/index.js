@@ -38,7 +38,8 @@ class Square extends React.Component {
                  
                 By calling this.setState from an onClick handler in the Square’s render method, 
                 we tell React to re-render that Square whenever its <button> is clicked. 
-                 
+                 When you call setState in a component, React automatically 
+                 updates the child components inside of it too.
                  */ }
          {this.state.value}
          {/* Use Chrome Developer tools > Console to see this.state.value as you click */}
