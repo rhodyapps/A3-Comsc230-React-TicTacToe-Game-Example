@@ -2,11 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
+// Note that in this part of the program we have plain javascript
+/*  we can use the JS comment syntax for single 
+or multiline comments
+*/
+
 class Square extends React.Component {
     render() {
       return (
         <button className="square">
          {this.props.value}
+          {/* 
+          Here we are passing a 'prop' from Board Component
+          to the Square component.
+          Also note that this is not HTML code it is JSX, 
+          hence we need to use curly braces to enclose JS comments
+            */}
         </button>
       );
     }
