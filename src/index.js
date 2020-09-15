@@ -41,6 +41,8 @@ class Square extends React.Component {
                  
                  */ }
          {this.state.value}
+         {/* Use Chrome Developer tools > Console to see this.state.value as you click */}
+         {console.log(this.state.value)}
          
          
         </button>
