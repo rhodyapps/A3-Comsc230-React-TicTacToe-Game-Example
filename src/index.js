@@ -10,15 +10,12 @@ or multiline comments
 class Square extends React.Component {
     render() {
       return (
-        <button className="square">
+        <button className="square" onClick={function() { 
+            alert('click'); }}>
+                {/* alert renders a popup box when you click on a square */ }
          {this.props.value}
          {console.log(this.props.value)}
-          {/* 
-          Here we are passing a 'prop' from Board Component
-          to the Square component.
-          Also note that this is not HTML code it is JSX, 
-          hence we need to use curly braces to enclose JS comments
-            */}
+         
         </button>
       );
     }
