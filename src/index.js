@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// Note that in this part of the program we have plain javascript
-/*  we can use the JS comment syntax for single 
+/* This branch, part4-arrow-function-syntax shows how to 
+use the arrow function syntax to streamline the codeing for functions.
+Note that in this part of the program we have plain javascript
+ we can use the JS comment syntax for single 
 or multiline comments
 */
 
