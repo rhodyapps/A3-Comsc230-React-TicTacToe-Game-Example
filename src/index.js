@@ -2,9 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// Note that in this part of the program we have plain javascript
-/*  we can use the JS comment syntax for single 
-or multiline comments
+/* In this branch part3-interactive-component we show how to create React function that responds to a click 
+event by displaying a popup alert when the player clicks on a square.
+
+Note that in this part of the program we have plain javascript
+ we can use the JS comment syntax for single 
+or multiline comments. 
+However in the JSX we must use the multiline syntax asurrounded by curly braces.
+
+
 */
 
 class Square extends React.Component {
