@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Header from './Header';
 
 
 /* 
@@ -133,7 +134,16 @@ function Square(props) {
     
         return (
           <div className="game">
-            <div className="game-board">
+            <div>
+            <Header />
+            </div>
+            <div className="game-board" style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingTop: '20px',
+            
+            }}>
               <Board
                 squares={current.squares}
                 onClick={(i) => this.handleClick(i)}

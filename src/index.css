@@ -1,9 +1,88 @@
+
+/*
+In this branch part12-css-styling we will borrow some css styles from the 
+Assignment 2 HTML responsive web site.
+
+Recall that:
+A CSS rule set has one part called selector, and the other part called declaration. The
+declaration contains various rules, each composed by a property, and a value.
+In this example, p is the selector, and applies one rule which sets the value 20px to the
+font-size property: In this example the body is the selector
+and there are a set of rules for: font, padding, margin, and background-color
+*/
+
+/* Comment out the previous code and replace it with the CSS from A2
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
     margin: 20px;
   }
-  
+  */
+
+  body{
+    font: 15px/1.5 Arial, Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+    background-color:#f4f4f4;
+  }
+
+  /* Add the css for the header */
+
+   /* Header **/
+header{
+  background:#35424a;
+  color:#ffffff;
+  padding-top:30px;
+  min-height:70px;
+  border-bottom:#e8491d 3px solid;
+}
+
+
+header a{
+  color:#ffffff;
+  text-decoration:none;
+  text-transform: uppercase;
+  font-size:16px;
+}
+
+
+header li{
+
+  display:inline;
+  padding: 0 20px 0 20px;
+
+}
+
+/*  
+Notice the use of the # because the branding component has an id 
+*/
+
+header #branding{
+  float:left;
+}
+
+header #branding h1{
+  margin:0;
+}
+
+header nav{
+  float:right;
+  margin-top:10px;
+}
+
+header .highlight, header .current a{
+  color:#e8491d;
+  font-weight:bold;
+}
+
+
+header a:hover{
+  color:#cccccc;
+  font-weight:bold;
+}
+
+
   ol, ul {
+  
     padding-left: 30px;
   }
   
@@ -42,10 +121,11 @@ body {
   
   .game {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
   
   .game-info {
     margin-left: 20px;
+    
   }
   
