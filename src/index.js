@@ -141,7 +141,7 @@ function Square(props) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              paddingTop: '20px',
+              paddingTop: '60px',
             
             }}>
               <Board
