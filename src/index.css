@@ -57,7 +57,8 @@ Notice the use of the # because the branding component has an id
 */
 
 header #branding{
-  float:left;
+  float:left; 
+  padding-left: 30px;
 }
 
 header #branding h1{
@@ -126,6 +127,6 @@ header a:hover{
   
   .game-info {
     margin-left: 20px;
-    
+
   }
   
