@@ -5,29 +5,16 @@ import Header from './Header';
 
 
 /* 
+This branch shows how to fix the 'Warning did you mean className?'
+error in the header component. 
+This error is caused when you copy html into a react component and have not changed the code
+to follow JSX syntax rules. 
 
-Clicking any of the list item’s buttons throws an error because the jumpTo method 
-is undefined. Before we implement jumpTo, we’ll add stepNumber to 
-the Game component’s state to indicate which step we’re currently viewing.
+Check out this online utility that you can use to change HTML into JSX:
+https://magic.reactjs.net/htmltojsx.htm
 
-First, add stepNumber: 0 to the initial state in Game’s constructor.
-Next, we’ll define the jumpTo method in Game to update that stepNumber. 
-We also set xIsNext to true if the number that we’re changing stepNumber 
-to is even.
-
-We will now make a few changes to the Game’s handleClick method which fires when 
-you click on a square.
-The stepNumber state we’ve added reflects the move displayed to the user now. 
-After we make a new move, we need to update stepNumber by adding stepNumber: 
-history.length as part of the this.setState argument. 
-This ensures we don’t get stuck showing the same move after a new one has been made.
-
-We will also replace reading this.state.history with this.state.history.slice(0, this.state.stepNumber + 1). 
-This ensures that if we “go back in time” and then make a new move from that point, 
-we throw away all the “future” history that would now become incorrect.
-
-Finally, we will modify the Game component’s render method from always rendering
- the last move to rendering the currently selected move according to stepNumber:
+To use it copy the HTML from the header component in part12 and paset it in to the utility.
+Notice that it will change any instances of 'class' to 'className'.
 
 */
 
